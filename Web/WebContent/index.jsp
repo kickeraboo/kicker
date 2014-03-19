@@ -20,7 +20,7 @@
 		</p>
 
 		<a href="https://twitter.com/kickeraboo"
-			title="Visit Kickeraboo on Twitter" class="twitter center">Kickeraboo</a>
+			title="Visit Kickeraboo on Twitter" class="twitter center">@Kickeraboo</a>
 
 	</div>
 
