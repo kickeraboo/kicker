@@ -4,7 +4,7 @@
 package bll;
 
 /**
- * @author Hanlet
+ * @author Hamlet
  *
  */
 public class Role {

@@ -1,0 +1,19 @@
+/**
+ * 
+ */
+package bll;
+
+/**
+ * @author Hamlet
+ *
+ */
+public class Item {
+
+	/**
+	 * 
+	 */
+	public Item() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

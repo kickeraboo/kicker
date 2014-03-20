@@ -8,3 +8,5 @@
 1395299604761	Encapsulate field 'mRoleID'
 1395299614533	Encapsulate field 'mRoleName'
 1395299624999	Encapsulate field 'mStatus'
+1395300202148	Encapsulate field 'mItemID'
+1395300218423	Encapsulate field 'mItemName'
