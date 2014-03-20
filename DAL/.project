@@ -3,6 +3,7 @@
 	<name>DAL</name>
 	<comment></comment>
 	<projects>
+		<project>BLL</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
