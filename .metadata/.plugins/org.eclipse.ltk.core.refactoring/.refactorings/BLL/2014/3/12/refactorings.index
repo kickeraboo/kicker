@@ -5,3 +5,6 @@
 1395298649164	Encapsulate field 'mUsername'
 1395298661535	Encapsulate field 'mRoleID'
 1395298689788	Encapsulate field 'mStatus'
+1395299604761	Encapsulate field 'mRoleID'
+1395299614533	Encapsulate field 'mRoleName'
+1395299624999	Encapsulate field 'mStatus'
