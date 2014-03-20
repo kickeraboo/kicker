@@ -107,7 +107,7 @@ public class User {
 	}
 
 	/**
-	 * Default User Constructor. 
+	 * Default User Constructor.
 	 */
 	public User(int pUserID, String pEmail, String pFacebookID,
 			String pUsername, int pRoleID, boolean pStatus) {

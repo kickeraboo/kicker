@@ -5,10 +5,10 @@ package bll;
 
 /**
  * @author Hanlet
- *
+ * 
  */
 public class Role {
-	
+
 	private int mRoleID;
 	private String mRoleName;
 	private boolean mStatus;
@@ -21,7 +21,8 @@ public class Role {
 	}
 
 	/**
-	 * @param mRoleID the mRoleID to set
+	 * @param mRoleID
+	 *            the mRoleID to set
 	 */
 	public void setRoleID(int pRoleID) {
 		this.mRoleID = pRoleID;
@@ -35,7 +36,8 @@ public class Role {
 	}
 
 	/**
-	 * @param mRoleName the mRoleName to set
+	 * @param mRoleName
+	 *            the mRoleName to set
 	 */
 	public void setRoleName(String pRoleName) {
 		this.mRoleName = pRoleName;
@@ -49,7 +51,8 @@ public class Role {
 	}
 
 	/**
-	 * @param mStatus the mStatus to set
+	 * @param mStatus
+	 *            the mStatus to set
 	 */
 	public void setStatus(boolean pStatus) {
 		this.mStatus = pStatus;
@@ -58,8 +61,7 @@ public class Role {
 	/**
 	 * 
 	 */
-	public Role(int pRoleID, String pRoleName, boolean pStatus) 
-	{
+	public Role(int pRoleID, String pRoleName, boolean pStatus) {
 		this.mRoleID = pRoleID;
 		this.mRoleName = pRoleName;
 		this.mStatus = pStatus;

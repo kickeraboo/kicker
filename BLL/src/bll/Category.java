@@ -7,7 +7,7 @@ import java.util.Date;
 
 /**
  * @author Hamlet
- *
+ * 
  */
 public class Category {
 
@@ -15,7 +15,7 @@ public class Category {
 	private String mCategoryName;
 	private String mDescription;
 	private Date mCreationDate;
-	
+
 	/**
 	 * @return the mCategoryID
 	 */
@@ -24,7 +24,8 @@ public class Category {
 	}
 
 	/**
-	 * @param mCategoryID the mCategoryID to set
+	 * @param mCategoryID
+	 *            the mCategoryID to set
 	 */
 	public void setCategoryID(int pCategoryID) {
 		this.mCategoryID = pCategoryID;
@@ -38,7 +39,8 @@ public class Category {
 	}
 
 	/**
-	 * @param mCategoryName the mCategoryName to set
+	 * @param mCategoryName
+	 *            the mCategoryName to set
 	 */
 	public void setCategoryName(String pCategoryName) {
 		this.mCategoryName = pCategoryName;
@@ -52,7 +54,8 @@ public class Category {
 	}
 
 	/**
-	 * @param mDescription the mDescription to set
+	 * @param mDescription
+	 *            the mDescription to set
 	 */
 	public void setDescription(String pDescription) {
 		this.mDescription = pDescription;
@@ -66,7 +69,8 @@ public class Category {
 	}
 
 	/**
-	 * @param mCreationDate the mCreationDate to set
+	 * @param mCreationDate
+	 *            the mCreationDate to set
 	 */
 	public void setCreationDate(Date pCreationDate) {
 		this.mCreationDate = pCreationDate;
@@ -75,8 +79,8 @@ public class Category {
 	/**
 	 * 
 	 */
-	public Category(int pCategoryID, String pCategoryName, String pDescription, Date pCreationDate) 
-	{
+	public Category(int pCategoryID, String pCategoryName, String pDescription,
+			Date pCreationDate) {
 		this.mCategoryID = pCategoryID;
 		this.mCategoryName = pCategoryName;
 		this.mDescription = pDescription;

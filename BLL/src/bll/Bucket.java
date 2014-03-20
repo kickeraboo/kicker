@@ -79,8 +79,8 @@ public class Bucket {
 	/**
 	 * 
 	 */
-	public Bucket(int pBucketID, int pUserID, String pBucketName, Date pCreationDate) 
-	{
+	public Bucket(int pBucketID, int pUserID, String pBucketName,
+			Date pCreationDate) {
 		this.mBucketID = pBucketID;
 		this.mUserID = pBucketID;
 		this.mBucketName = pBucketName;
