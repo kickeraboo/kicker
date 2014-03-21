@@ -1,7 +1,0 @@
-INDEX VERSION 1.126
-C:\Kickeraboo\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1918552229.index
-\Web\src
-C:\Kickeraboo\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1150830022.index
-\kicker\src
-C:\Kickeraboo\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2278609086.index
-\kicker\src

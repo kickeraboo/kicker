@@ -1,8 +1,0 @@
-INDEX VERSION 1.3+C:\Kickeraboo\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-3194658975.index
-1150830022.index
-1207886512.index
-1623785295.index
-2278609086.index
-32784678.index
-1083820110.index
