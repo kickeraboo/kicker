@@ -35,9 +35,25 @@ public class testServlet extends HttpServlet
          throws ServletException, IOException
    {
       // TODO Auto-generated method stub
-      List<User> users = User.getAll();
+      //List<User> users = User.getAll();
       
-      System.out.println(users.get(0).getEmail());
+      //System.out.println(users.get(0).getEmail());
+      /*User usr = User.CreateUser("sample@test.com", "222dfsdf", "myUserName", 2, true);
+      
+      if (usr!= null)
+      {
+         System.out.println(usr.getUserID() + usr.getUsername());
+      }
+      else
+      {
+         System.out.println("Could not create user");
+      }*/
+      
+      //User.deleteUser(14);
+      
+      User usr = User.getUserById(13);
+      usr.setUsername("Hamlet");
+      User.updateUser(usr);
    }
    
    /**

@@ -23,14 +23,20 @@ public class DataService
    static final String DB_URL = PropertiesHelper
          .getProperty("DB_CONNECTION_STRING");
    
+   public static Connection getConnection() throws SQLException,
+         ClassNotFoundException
+   {
+      Class.forName(JDBC_DRIVER);
+      return DriverManager.getConnection(DB_URL, USER, PASS);
+   }
+   
    public static ResultSet getData(String query)
    {
       Connection conn = null;
       Statement stmt = null;
       try
       {
-         Class.forName(JDBC_DRIVER);
-         conn = DriverManager.getConnection(DB_URL, USER, PASS);
+         conn = getConnection();
          stmt = conn.createStatement();
          ResultSet rs = stmt.executeQuery(query);
          
@@ -80,8 +86,87 @@ public class DataService
       return null;
    }
    
-   public static boolean execute(String procedureName)
+   public static boolean executeDelete(String query)
    {
+      try
+      {
+         Connection conn = getConnection();
+         Statement smt = conn.createStatement();
+         return smt.executeUpdate(query)  > 0  ? true : false;
+         
+      }
+      catch (ClassNotFoundException e)
+      {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+      }
+      catch (SQLException e)
+      {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+      }
       return false;
+      
+   }
+   
+   public static boolean executeUpdate(String query)
+   {
+      try
+      {
+         Connection conn = getConnection();
+         Statement smt = conn.createStatement();
+         return smt.executeUpdate(query) > 0 ? true : false;
+      }
+      catch (ClassNotFoundException e)
+      {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+      }
+      catch (SQLException e)
+      {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+      }
+      return false;
+      
+   }
+   
+   public static int executeCreate(String query)
+   {
+      int insertedId = -1;
+      try
+      {
+         ResultSet rs = null;
+         
+         Connection conn = getConnection();
+         Statement stmt = conn.prepareStatement(query,
+               Statement.RETURN_GENERATED_KEYS);
+         int affectedRows = stmt.executeUpdate(query, Statement.RETURN_GENERATED_KEYS);
+         
+         if (affectedRows > 0)
+         {
+            rs = stmt.getGeneratedKeys();
+            if (rs.next())
+            {
+               insertedId = rs.getInt(1);
+            }
+         }
+         
+         conn.close();
+         stmt.close();
+         rs.close();
+      }
+      catch (ClassNotFoundException e)
+      {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+      }
+      catch (SQLException e)
+      {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+      }
+      
+      return insertedId;
    }
 }
