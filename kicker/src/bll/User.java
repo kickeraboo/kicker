@@ -125,10 +125,10 @@ public class User
    }
    
    /**
-    * Default User Constructor.
+    * Default User Constructor. Not userID allowed.
     */
-   public User(int pUserID, String pEmail, String pFacebookID,
-         String pUsername, int pRoleID, boolean pStatus)
+   public User(int pUserID, String pEmail, String pFacebookID, String pUsername,
+         int pRoleID, boolean pStatus)
    {
       this.mUserID = pUserID;
       this.mEmail = pEmail;
@@ -138,50 +138,109 @@ public class User
       this.mStatus = pStatus;
    }
    
+   /**
+    * Default constructor.
+    */
    public User()
    {
-      // TODO Auto-generated constructor stub
    }
    
+   /**
+    * getAll Retrieves all users from the database.
+    * 
+    * @return A list of User objects.
+    */
    public static List<User> getAll()
    {
       UserDao user = new JdbcUser();
       return user.getAll();
    }
    
+   /**
+    * Creates a new user in the database.
+    * 
+    * @param newUser
+    *           The user to be inserted.
+    * @return A User object that was just created.
+    */
    public static User createUser(User newUser)
    {
       UserDao user = new JdbcUser();
       return user.createUser(newUser);
    }
    
-   public static User createUser(String Email, String FacebookID, String Username, int RoleID, boolean Status)
+   /**
+    * Creates a user in the database.
+    * 
+    * @param Email
+    *           The email of the user.
+    * @param FacebookID
+    *           FacebookID of the user.
+    * @param Username
+    *           Username of the user.
+    * @param RoleID
+    *           RoleID of the user.
+    * @param Status
+    *           Indicates if the user is enabled or disabled in the system.
+    * @return A user object that was just created.
+    */
+   public static User createUser(String Email, String FacebookID,
+         String Username, int RoleID, boolean Status)
    {
       UserDao user = new JdbcUser();
-      return user.createUser(new User(0, Email, FacebookID, Username, RoleID, Status));
+      return user.createUser(new User(0, Email, FacebookID, Username, RoleID,
+            Status));
    }
    
+   /**
+    * deleteUser Deletes a user from the database.
+    * 
+    * @param userId
+    *           The id of the user to be removed.
+    * @return True/false if the user was deleted or not.
+    */
    public static boolean deleteUser(int userId)
    {
       UserDao user = new JdbcUser();
       return user.deleteUser(userId);
    }
    
+   /**
+    * deleteUser Deletes a user from the database.
+    * 
+    * @param User
+    *           An user instance that will be deleted from the database.
+    * @return True/false if the user was deleted or not.
+    */
    public static boolean deleteUser(User usr)
    {
       return deleteUser(usr.getUserID());
    }
    
+   /**
+    * updateUser Updates an user in the database with new data.
+    * 
+    * @param usr
+    *           The user instance to be updated.
+    * @return True/false if the user was updated or not.
+    */
    public static boolean updateUser(User usr)
    {
       UserDao user = new JdbcUser();
       return user.updateUser(usr);
    }
    
-  public static User getUserById(int userId)
-  {
-     UserDao user = new JdbcUser();
-     return user.getUserById(userId);
-     
-  }
+   /**
+    * getUserById Obtains a user from the database given a userId.
+    * 
+    * @param userId
+    *           The id of the user to be retrieved.
+    * @return A user object obtained from the id.
+    */
+   public static User getUserById(int userId)
+   {
+      UserDao user = new JdbcUser();
+      return user.getUserById(userId);
+      
+   }
 }
