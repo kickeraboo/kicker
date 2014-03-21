@@ -3,6 +3,8 @@
 .classpath
 .metadata
 *.class
+Servers
+RemoteSystemTempFiles
 
 # Package Files #
 *.jar
