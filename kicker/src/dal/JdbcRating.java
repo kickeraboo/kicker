@@ -3,9 +3,7 @@ package dal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import bll.Rating;
 
@@ -17,7 +15,7 @@ public class JdbcRating implements RatingDao
     * @return Returns the rating inserted from the database, or null if error.
     */
       @Override
-      public User createRating(Rating newRating)
+      public Rating createRating(Rating newRating)
    {
       // format the string
       String query = "INSERT INTO Ratings(ItemId, Rating, Comment)";
@@ -43,7 +41,7 @@ public class JdbcRating implements RatingDao
     * @return Returns the rating with this id in the database.
     */
       @Override
-      public User getRatingById(int ratingId)
+      public Rating getRatingById(int ratingId)
    {
       String query = "SELECT * FROM Ratings WHERE UserID = " + ratingId;
       ResultSet rs = DataService.getData(query);
@@ -70,13 +68,13 @@ public class JdbcRating implements RatingDao
     * @return Returns true or false if the rating was updated or not.
     */
       @Override
-      public boolean updateRating(User newRating)
+      public boolean updateRating(Rating newRating)
    {
       // format the string
       String query = "UPDATE Ratings SET ItemID = '%1$s', Rating = '%2$s', Comment = '%3$s' WHERE RatingID = %6$d";
 
-      query = String.format(query, newUser.getItem(), newUser.getRating(),
-                            newUser.getComment(), newUser.getRatingID());
+      query = String.format(query, newRating.getItemID(), newRating.getRating(),
+    		  newRating.getComment(), newRating.getRatingID());
 
       // if everything worked, inserted id will have the identity key
       // or primary key

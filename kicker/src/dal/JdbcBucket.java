@@ -3,9 +3,8 @@ package dal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import bll.Bucket;
 
@@ -17,14 +16,14 @@ public class JdbcBucket implements BucketDao
     * @return Returns the bucket inserted from the database, or null if error.
     */
       @Override
-      public User createBucket(User newBucket)
+      public Bucket createBucket(Bucket newBucket)
    {
       // format the string
       String query = "INSERT INTO Buckets(UserID, BucketName, CreationDate)";
       query += " VALUES ('%1$s', '%2$s', '%3$s)";
 
-      query = String.format(query, newBucket.getUserID(), newUser.getBucketName(),
-                            newUser.getCreationDate());
+      query = String.format(query, newBucket.getUserID(), newBucket.getBucketName(),
+    		  newBucket.getCreationDate());
 
       // if everything worked, inserted id will have the identity key
       // or primary key
@@ -43,7 +42,7 @@ public class JdbcBucket implements BucketDao
     * @return Returns the bucket with this id in the database.
     */
       @Override
-      public User getBucketById(int bucketId)
+      public Bucket getBucketById(int bucketId)
    {
       String query = "SELECT * FROM Buckets WHERE BucketID = " + bucketId;
       ResultSet rs = DataService.getData(query);
@@ -70,7 +69,7 @@ public class JdbcBucket implements BucketDao
     * @return Returns true or false if the bucket was updated or not.
     */
       @Override
-      public boolean updateBucket(User newBucket)
+      public boolean updateBucket(Bucket newBucket)
    {
       // format the string
       String query = "UPDATE Buckets SET UserID = '%1$s', BucketName = '%2$s', CreationDate = '%3$s' WHERE BucketID = %6$d";
@@ -89,7 +88,7 @@ public class JdbcBucket implements BucketDao
     * @return Returns true if the bucket was deleted and false if the bucket was not deleted.
     */
       @Override
-      public boolean deleteBucket(User oldBucket)
+      public boolean deleteBucket(Bucket oldBucket)
    {
       return deleteBucket(oldBucket.getBucketID());
    }
@@ -139,7 +138,7 @@ public class JdbcBucket implements BucketDao
     * @param rs The result set to convert into a Bucket object.
     * @return A bucket object.
     */
-   public User convertResultSetToBucket(ResultSet rs)
+   public Bucket convertResultSetToBucket(ResultSet rs)
    {
       if (rs != null)
       {
@@ -152,8 +151,7 @@ public class JdbcBucket implements BucketDao
                      //Not sure about this one being a Date object
                      Date pCreationDate = rs.getDate("CreationDate");
 
-                     return new User(pUserID, pEmail, pFacebookID, pUsername, pRoleID,
-                                     pStatus);
+                     return new Bucket(pBucketID, pUserID, pBucketName, pCreationDate);
                   }
                   catch (Exception e)
                   {
