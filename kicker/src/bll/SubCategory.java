@@ -64,4 +64,9 @@ public class SubCategory {
 		this.mSubCategoryName = pSubCategoryName;
 		this.mCategoryID = pCategoryID;
 	}
+
+	public SubCategory(int pSubCategoryID, String pSubCategoryName,
+			String pCategoryID) {
+		// TODO Auto-generated constructor stub
+	}
 }

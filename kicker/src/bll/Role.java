@@ -67,4 +67,8 @@ public class Role {
 		this.mStatus = pStatus;
 	}
 
+	public Role(int pRoleID, String pRoleName, String pStatus) {
+		// TODO Auto-generated constructor stub
+	}
+
 }

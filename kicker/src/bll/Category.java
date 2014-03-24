@@ -87,4 +87,9 @@ public class Category {
 		this.mCreationDate = pCreationDate;
 	}
 
+	public Category(int pCategoryID, String pCategoryName, String pDescription,
+			String pCreationDate) {
+		// TODO Auto-generated constructor stub
+	}
+
 }
