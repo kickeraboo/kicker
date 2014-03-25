@@ -11,4 +11,5 @@ public interface UserDao {
 	public boolean deleteUser(User dUser);
 	public boolean deleteUser(int userId);
 	public List<User> getAll();
+	public User getUserByFacebookId(String FacebookId);
 }

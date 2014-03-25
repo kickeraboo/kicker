@@ -241,6 +241,11 @@ public class User
    {
       UserDao user = new JdbcUser();
       return user.getUserById(userId);
-      
+   }
+   
+   public static User getUserByFacebookId(String facebookId)
+   {
+      UserDao user = new JdbcUser();
+      return user.getUserByFacebookId(facebookId);
    }
 }

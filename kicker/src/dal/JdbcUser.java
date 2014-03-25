@@ -63,6 +63,27 @@ public class JdbcUser implements UserDao
       return null;
    }
    
+   public User getUserByFacebookId(String facebookId)
+   {
+	      String query = "SELECT * FROM Users WHERE FacebookID = " + facebookId;
+	      ResultSet rs = DataService.getData(query);
+	      
+	      try
+	      {
+	         if (rs.next())
+	         {
+	            return convertResultSetToUser(rs);
+	         }
+	      }
+	      catch (SQLException e)
+	      {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      }
+	      
+	      return null;
+   }
+   
    /**
     * updateUser Updates a user in the database.
     * @param newUser The user instance to be updated.
@@ -133,6 +154,7 @@ public class JdbcUser implements UserDao
       
       return users;
    }
+   
    
    /**
     * convertResultSetToUser for lack of implicit/explicit operators, we manually convert a row in the result set, into an user.

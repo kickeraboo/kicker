@@ -13,7 +13,7 @@
 		<a href="SignInServlet">Sign in with Facebook</a>
 	</tag:notloggedin>
 	<tag:loggedin>
-		<h1>Welcome ${facebook.name} (${facebook.id})</h1>
+		<h1>Welcome ${LoggedUser.getEmail()}</h1>
 		<a href="./SignOutServlet">logout</a>
 	</tag:loggedin>
 </body>
