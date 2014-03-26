@@ -14,7 +14,7 @@ import facebook4j.FacebookFactory;
 /**
  * Servlet implementation class SignInServlet
  */
-@WebServlet("/SignInServlet")
+@WebServlet("/signin")
 public class SignInServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -34,7 +34,7 @@ public class SignInServlet extends HttpServlet {
         request.getSession().setAttribute("facebook", facebook);
         StringBuffer callbackURL = request.getRequestURL();
         int index = callbackURL.lastIndexOf("/");
-        callbackURL.replace(index, callbackURL.length(), "").append("/CallbackServlet");
+        callbackURL.replace(index, callbackURL.length(), "").append("/facebookcb");
         response.sendRedirect(facebook.getOAuthAuthorizationURL(callbackURL.toString()));
 	}
 }

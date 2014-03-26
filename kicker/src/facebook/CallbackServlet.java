@@ -18,7 +18,7 @@ import facebook4j.internal.org.json.JSONObject;
 /**
  * Servlet implementation class CallbackServlet
  */
-@WebServlet("/CallbackServlet")
+@WebServlet("/facebookcb")
 public class CallbackServlet extends HttpServlet
 {
    private static final long serialVersionUID = 1L;

@@ -10,11 +10,11 @@
 </head>
 <body>
 	<tag:notloggedin>
-		<a href="SignInServlet">Sign in with Facebook</a>
+		<a href="signin">Sign in with Facebook</a>
 	</tag:notloggedin>
 	<tag:loggedin>
 		<h1>Welcome ${LoggedUser.getEmail()}</h1>
-		<a href="./SignOutServlet">logout</a>
+		<a href="signout">logout</a>
 	</tag:loggedin>
 </body>
 </html>
