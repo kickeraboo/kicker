@@ -1,1 +1,1 @@
-<%if(null != session.getAttribute("facebook")){%><jsp:doBody/><%}%>
+<%if(null != session.getAttribute("LoggedUser")){%><jsp:doBody/><%}%>
