@@ -4,6 +4,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+/**
+ * This class is a helper to read .properties files.
+ * @author Hamlet
+ *
+ */
 public class PropertiesHelper
 {
    
@@ -37,6 +42,6 @@ public class PropertiesHelper
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "";
+		return ""; //always check against String.isEmpty();
 	}
 }

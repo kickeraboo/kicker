@@ -11,4 +11,5 @@ public interface BucketDao {
    public boolean deleteBucket(Bucket dBucket);
    public boolean deleteBucket(int bucketId);
    public List<Bucket> getAll();
+   public List<Bucket> getBucketsByUserId(int userId);
 }

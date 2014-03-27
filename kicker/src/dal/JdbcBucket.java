@@ -161,4 +161,26 @@ public class JdbcBucket implements BucketDao
 
       return null;
    }
+   
+   public List<Bucket> getBucketsByUserId(int userId)
+   {
+      ResultSet rs = DataService.getData("SELECT * FROM Buckets WHERE UserID = " + userId);
+
+      List<Bucket> buckets = new ArrayList<Bucket>();
+
+            try
+            {
+               while (rs.next())
+               {
+                  buckets.add(convertResultSetToBucket(rs));
+               }
+            }
+            catch (SQLException e)
+            {
+               // TODO Auto-generated catch block
+               e.printStackTrace();
+            }
+
+            return buckets;
+   }
 }
