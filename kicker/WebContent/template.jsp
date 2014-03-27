@@ -2,6 +2,8 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="decorator"
 	uri="http://claudiushauptmann.com/jsp-decorator/"%>
+<%@ taglib prefix="tag" tagdir="/WEB-INF/tags"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -57,17 +59,22 @@
 					<button type="submit" class="btn btn-default">Submit</button>
 				</form>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Link</a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" title="Settings"><i
-							class="glyphicon glyphicon-cog"></i><b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Manage Account</a></li>
-							<li><a href="#">Privacy Settings</a></li>
-							<li><a href="#">About</a></li>
-							<li class="divider"></li>
-							<li><a href="#">Logout</a></li>
-						</ul></li>
+					<tag:loggedin>
+						<li><a href="#">${LoggedUser.getFullname() }</a></li>
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown" title="Settings"><i
+								class="glyphicon glyphicon-cog"></i><b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Manage Account</a></li>
+								<li><a href="#">Privacy Settings</a></li>
+								<li><a href="#">About</a></li>
+								<li class="divider"></li>
+								<li><a href="signout">Logout</a></li>
+							</ul></li>
+					</tag:loggedin>
+					<tag:notloggedin>
+						<li><a href="login.jsp">Sign In</a></li>
+					</tag:notloggedin>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->

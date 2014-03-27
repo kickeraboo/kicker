@@ -19,6 +19,7 @@ public class User
    private String mEmail;
    private String mFacebookID;
    private String mUsername;
+   private String mFullname;
    private int mRoleID;
    private boolean mStatus;
    
@@ -82,6 +83,22 @@ public class User
    }
    
    /**
+    * @return the mFullname
+    */
+   public String getFullname()
+   {
+      return mFullname;
+   }
+
+   /**
+    * @param mFullname the mFullname to set
+    */
+   public void setFullname(String mFullname)
+   {
+      this.mFullname = mFullname;
+   }
+
+   /**
     * @param mUsername
     *           the mUsername to set
     */
@@ -127,13 +144,14 @@ public class User
    /**
     * Default User Constructor. Not userID allowed.
     */
-   public User(int pUserID, String pEmail, String pFacebookID, String pUsername,
+   public User(int pUserID, String pEmail, String pFacebookID, String pUsername, String pFullname,
          int pRoleID, boolean pStatus)
    {
       this.mUserID = pUserID;
       this.mEmail = pEmail;
       this.mFacebookID = pFacebookID;
       this.mUsername = pUsername;
+      this.mFullname = pFullname;
       this.mRoleID = pRoleID;
       this.mStatus = pStatus;
    }
@@ -185,10 +203,10 @@ public class User
     * @return A user object that was just created.
     */
    public static User createUser(String Email, String FacebookID,
-         String Username, int RoleID, boolean Status)
+         String Username, String Fullname, int RoleID, boolean Status)
    {
       UserDao user = new JdbcUser();
-      return user.createUser(new User(0, Email, FacebookID, Username, RoleID,
+      return user.createUser(new User(0, Email, FacebookID, Username, Fullname, RoleID,
             Status));
    }
    

@@ -54,7 +54,7 @@ public class CallbackServlet extends HttpServlet
       try
       {
          // selects the user information
-         String query = "SELECT email, username, uid  FROM user WHERE uid=me()";
+         String query = "SELECT email, username, name, uid  FROM user WHERE uid=me()";
          JSONArray jsonArray = facebook.executeFQL(query);
 
          if (jsonArray != null && jsonArray.length() > 0)
@@ -64,7 +64,7 @@ public class CallbackServlet extends HttpServlet
             String email = (String) jsonUser.get("email");
             String facebookId = (String) jsonUser.get("uid");
             String username = (String) jsonUser.get("username");
-
+            String fullname = (String) jsonUser.get("name");
             User tmpUser = null;
 
             if (!facebookId.isEmpty())
@@ -73,12 +73,12 @@ public class CallbackServlet extends HttpServlet
 
                if (tmpUser == null)
                {
-                  tmpUser = User.createUser(email, facebookId, username, 3, true);
+                  tmpUser = User.createUser(email, facebookId, username, fullname, 3, true);
                   // TODO: check if inserted successfully
                }
-               
-               //at this point we better have a user
-               
+
+               // at this point we better have a user
+
                if (tmpUser != null)
                {
                   // user exists put him in session
