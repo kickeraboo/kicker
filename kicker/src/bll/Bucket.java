@@ -4,6 +4,10 @@
 package bll;
 
 import java.util.Date;
+import java.util.List;
+
+import dal.BucketDao;
+import dal.JdbcBucket;
 
 /**
  * @author Hamlet
@@ -85,5 +89,17 @@ public class Bucket {
 		this.mUserID = pBucketID;
 		this.mBucketName = pBucketName;
 		this.mCreationDate = pCreationDate;
+	}
+	
+	public static List<Bucket> getAll()
+	{
+	   BucketDao bucket = new JdbcBucket();
+	   return bucket.getAll();
+	}
+	
+	public static List<Bucket> getBucketsByUserId(int userId)
+	{
+	   BucketDao bucket = new JdbcBucket();
+      return bucket.getBucketsByUserId(userId);
 	}
 }

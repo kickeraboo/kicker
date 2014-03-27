@@ -73,15 +73,8 @@
 		<!-- END NAVIGATION BAR -->
 		<div id="wrapper">
 			<div id="sidebar-wrapper">
-				<ul class="sidebar-nav">
+				<ul class="sidebar-nav" id="bucketList">
 					<li class="sidebar-brand"><a href="#">My Buckets</a></li>
-					<li><a href="#">Dashboard</a></li>
-					<li><a href="#">Shortcuts</a></li>
-					<li><a href="#">Overview</a></li>
-					<li><a href="#">Events</a></li>
-					<li><a href="#">About</a></li>
-					<li><a href="#">Services</a></li>
-					<li><a href="#">Contact</a></li>
 				</ul>
 			</div>
 		</div>
@@ -90,6 +83,24 @@
 		<!-- END WRAPPER -->
 	</div>
 	<script>
+		$(function() {
+			getBuckets(); //calls the method
+			
+			//gets a list of buckets for the logged in user
+			function getBuckets() {
+				$.get("/kicker/BucketServlet", function(r) {
+					var json = JSON.parse(r);
+					if (json.length > 0) {
+						for (var i = 0; i < json.length; i++) {
+							$("#bucketList").append(
+									"<li><a href='#'>" + json[i].bucketName
+											+ "</a></li>");
+						}
+					}
+				});
+			}
+		});
+		
 		$("#menu-toggle").click(function(e) {
 			e.preventDefault();
 			$("#wrapper").toggleClass("active");
