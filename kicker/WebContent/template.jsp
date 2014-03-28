@@ -60,10 +60,7 @@
 				</form>
 				<ul class="nav navbar-nav navbar-right">
 					<tag:loggedin>
-						<li><a href="#"><i
-								class="glyphicon glyphicon-user
-						"></i>
-								${LoggedUser.getFullname() }</a></li>
+						<li><a href="#"><i class="glyphicon glyphicon-user"></i>${LoggedUser.getFullname() }</a></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" title="Settings"><i
 								class="glyphicon glyphicon-cog"></i><b class="caret"></b></a>
@@ -85,7 +82,14 @@
 		<!-- /.container-fluid --> </nav>
 		<!-- END NAVIGATION BAR -->
 		<tag:loggedin>
-			<decorator:placeholder name="content"></decorator:placeholder>
+			<div class="container">
+				<div class="row-fluid">
+					<decorator:placeholder name="content"></decorator:placeholder>
+					<div class="span8">
+						ssss
+					</div>
+				</div>
+			</div>
 		</tag:loggedin>
 		<tag:notloggedin>
 			<!-- REGISTRATION/LOGIN FORMS BEGIN -->

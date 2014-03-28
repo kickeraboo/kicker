@@ -6,16 +6,18 @@
 	<decorator:content placeholder='title'>Welcome</decorator:content>
 	<decorator:content placeholder='content'>
 		<!-- SIDE MENU BAR BEGIN -->
-		<div id="wrapper">
-			<div id="sidebar-wrapper">
-				<ul class="sidebar-nav" id="bucketList">
-					<li class="sidebar-brand"><a href="#">My Buckets</a></li>
-				</ul>
+		<div class="span2">
+			<div id="wrapper">
+				<div id="sidebar-wrapper">
+					<ul class="sidebar-nav" id="bucketList">
+						<li class="sidebar-brand"><a href="#">My Buckets</a></li>
+					</ul>
+				</div>
 			</div>
+			<a id="menu-toggle" href="#" class="btn btn-primary"><i
+				class="icon-reorder">></i></a>
+			<!-- SIDE MENU BAR END -->
 		</div>
-		<a id="menu-toggle" href="#" class="btn btn-primary"><i
-			class="icon-reorder">></i></a>
-		<!-- SIDE MENU BAR END -->
 	</decorator:content>
 
 	<decorator:content placeholder="bottom">
