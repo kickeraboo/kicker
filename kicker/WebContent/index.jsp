@@ -27,7 +27,7 @@
 
 				//gets a list of buckets for the logged in user
 				function getBuckets() {
-					$.get("/kicker/BucketServlet", function(r) {
+					$.get("${pageContext.request.contextPath}/BucketServlet", function(r) {
 						var json = JSON.parse(r);
 						if (json.length > 0) {
 							for (var i = 0; i < json.length; i++) {
