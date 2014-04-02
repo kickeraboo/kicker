@@ -14,6 +14,8 @@ public class State
    public State (int pStateID, String pName, String pAbbreviation)
    {
       this.mStateID = pStateID;
+      this.mName = pName;
+      this.mAbbreviation = pAbbreviation;
    }
    
    /**
