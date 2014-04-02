@@ -19,11 +19,11 @@ public class JdbcBucket implements BucketDao
       public Bucket createBucket(Bucket newBucket)
    {
       // format the string
-      String query = "INSERT INTO Buckets(UserID, BucketName, CreationDate)";
-      query += " VALUES ('%1$s', '%2$s', '%3$s)";
+      String query = "INSERT INTO Buckets(UserID, BucketName, CreationDate, Description, CityID)";
+      query += " VALUES (%1$d, '%2$s', '%3$s', '%4$s', %3$d)";
 
       query = String.format(query, newBucket.getUserID(), newBucket.getBucketName(),
-    		  newBucket.getCreationDate());
+    		  newBucket.getCreationDate(), newBucket.getDescription(), newBucket.getCityID());
 
       // if everything worked, inserted id will have the identity key
       // or primary key
@@ -72,10 +72,10 @@ public class JdbcBucket implements BucketDao
       public boolean updateBucket(Bucket newBucket)
    {
       // format the string
-      String query = "UPDATE Buckets SET UserID = '%1$s', BucketName = '%2$s', CreationDate = '%3$s' WHERE BucketID = %6$d";
+      String query = "UPDATE Buckets SET UserID = %1$d, BucketName = '%2$s', CreationDate = '%3$s', Description = '%4$s', CityID = %5$d WHERE BucketID = %6$d";
 
       query = String.format(query, newBucket.getUserID(), newBucket.getBucketName(),
-                            newBucket.getCreationDate());
+                            newBucket.getCreationDate(), newBucket.getDescription(), newBucket.getCityID(), newBucket.getBucketID());
 
       // if everything worked, inserted id will have the identity key
       // or primary key
@@ -147,11 +147,13 @@ public class JdbcBucket implements BucketDao
                      int pBucketID = rs.getInt("BucketID");
                      int pUserID = rs.getInt("UserID");
                      String pBucketName = rs.getString("BucketName");
+                     String pDescription = rs.getString("Description");
+                     int pCityID = rs.getInt("CityID");
 
                      //Not sure about this one being a Date object
                      Date pCreationDate = rs.getDate("CreationDate");
 
-                     return new Bucket(pBucketID, pUserID, pBucketName, pCreationDate);
+                     return new Bucket(pBucketID, pUserID, pBucketName, pCreationDate, pDescription, pCityID);
                   }
                   catch (Exception e)
                   {
