@@ -149,4 +149,10 @@ public class Bucket
       BucketDao bucket = new JdbcBucket();
       return bucket.getBucketsByUserId(userId);
    }
+   
+   public static Bucket CreateBucket(int pUserID, String pBucketName, String pDescription, int pCityID)
+   {
+      BucketDao bucket = new JdbcBucket();
+      return bucket.createBucket(new Bucket(0, pUserID, pBucketName, null, pDescription, pCityID));
+   }
 }
