@@ -65,10 +65,24 @@
 		<!-- END NAVIGATION BAR -->
 		<tag:loggedin>
 			<div class="container">
-				<div class="row-fluid">
-					<decorator:placeholder name="content"></decorator:placeholder>
-					<div class="span8">
-						ssss 
+				<div class="col-md-12">
+					<div class="row">
+						<!-- SIDE MENU BAR BEGIN -->
+						<div class="col-md-2">
+							<div id="wrapper">
+								<div id="sidebar-wrapper">
+									<ul class="sidebar-nav" id="bucketList">
+										<li class="sidebar-brand"><a href="#">My Buckets</a></li>
+									</ul>
+								</div>
+							</div>
+							<a id="menu-toggle" href="#" class="btn btn-primary"><i
+								class="icon-reorder">></i></a>
+						</div>
+						<!-- SIDE MENU BAR END -->
+						<div class="col-md-10">
+							<decorator:placeholder name="content"></decorator:placeholder>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -222,5 +236,34 @@
 		<!-- END WRAPPER -->
 	</div>
 	<decorator:placeholder name="bottom"></decorator:placeholder>
+	<tag:loggedin>
+		<script>
+			//this will run only when the user is logged in
+			$(function() {
+				getBuckets(); //calls the method
+
+				//gets a list of buckets for the logged in user
+				function getBuckets() {
+					$.get("${pageContext.request.contextPath}/BucketServlet",
+							function(r) {
+								var json = JSON.parse(r);
+								if (json.length > 0) {
+									for (var i = 0; i < json.length; i++) {
+										$("#bucketList").append(
+												"<li><a href='#'>"
+														+ json[i].bucketName
+														+ "</a></li>");
+									}
+								}
+							});
+				}
+			});
+
+			$("#menu-toggle").click(function(e) {
+				e.preventDefault();
+				$("#wrapper").toggleClass("active");
+			});
+		</script>
+	</tag:loggedin>
 </body>
 </html>
