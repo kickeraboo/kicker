@@ -7,6 +7,9 @@
 <decorator:decorate filename='template.jsp'>
 	<decorator:content placeholder='title'>Welcome</decorator:content>
 	<decorator:content placeholder='content'>
+		<tag:createBar></tag:createBar>
 		Hello world!
+		<tag:createBucket></tag:createBucket>
+		<tag:createItem></tag:createItem>
 	</decorator:content>
 </decorator:decorate>
