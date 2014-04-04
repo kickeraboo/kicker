@@ -68,7 +68,7 @@ public class JdbcRole implements RoleDao {
 	@Override
 	public Role getRoleByName(String roleName)
 	{
-		String query = "SELECT * FROM Roles WHERE RoleName = " + roleName;
+		String query = "SELECT * FROM Roles WHERE RoleName =  '" + roleName + "'";
 		ResultSet rs = DataService.getData(query);
 
 		try {
