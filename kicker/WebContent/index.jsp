@@ -2,6 +2,8 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="decorator"
 	uri="http://claudiushauptmann.com/jsp-decorator/"%>
+   <%@ taglib prefix="tag" tagdir="/WEB-INF/tags"%>
+   
 <decorator:decorate filename='template.jsp'>
 	<decorator:content placeholder='title'>Welcome</decorator:content>
 	<decorator:content placeholder='content'>
