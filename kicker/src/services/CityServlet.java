@@ -13,22 +13,26 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class CityServlet
  */
 @WebServlet("/CityServlet")
-public class CityServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CityServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+public class CityServlet extends HttpServlet
+{
+   private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	   if (request.getSession().getAttribute("LoggedUser") == null)
+   /**
+    * @see HttpServlet#HttpServlet()
+    */
+   public CityServlet()
+   {
+      super();
+      // TODO Auto-generated constructor stub
+   }
+
+   /**
+    * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+    *      response)
+    */
+   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+   {
+      if (request.getSession().getAttribute("LoggedUser") == null)
       {
          response.sendRedirect("index.jsp");
       }
@@ -38,27 +42,28 @@ public class CityServlet extends HttpServlet {
       if (!action.isEmpty())
       {
          PrintWriter writer = response.getWriter();
-         
+
          switch (action.toLowerCase())
          {
             case "getcitiesbystateid":
                int stateId = Integer.parseInt(request.getParameter("stateid"));
-               String partialName = (String)request.getParameter("term");
-               
-               if (stateId > 0 && !partialName.isEmpty())
+
+               if (stateId > 0)
                {
-                  writer.write(CityService.getCitiesByStateIdAndPartialName(stateId, partialName));
+                  writer.write(CityService.getCitiesByStateId(stateId));
                }
                break;
          }
       }
-	}
+   }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
+   /**
+    * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+    *      response)
+    */
+   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+   {
+      // TODO Auto-generated method stub
+   }
 
 }

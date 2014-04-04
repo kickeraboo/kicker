@@ -15,61 +15,68 @@ import bll.User;
  * Servlet implementation class BucketServlet
  */
 @WebServlet("/BucketServlet")
-public class BucketServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+public class BucketServlet extends HttpServlet
+{
+   private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public BucketServlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+   /**
+    * @see HttpServlet#HttpServlet()
+    */
+   public BucketServlet()
+   {
+      super();
+      // TODO Auto-generated constructor stub
+   }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().write(BucketService.getBucketsByUserId(16));
-	}
+   /**
+    * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+    *      response)
+    */
+   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+   {
+      response.getWriter().write(BucketService.getBucketsByUserId(16));
+   }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		if (request.getSession().getAttribute("LoggedUser") == null) {
-			response.sendRedirect("index.jsp");
-		}
+   /**
+    * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+    *      response)
+    */
+   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+   {
+      if (request.getSession().getAttribute("LoggedUser") == null)
+      {
+         response.sendRedirect("index.jsp");
+      }
 
-		User usr = (User) request.getSession().getAttribute("LoggedUser");
+      User usr = (User) request.getSession().getAttribute("LoggedUser");
 
-		String action = (String) request.getParameter("action");
+      String action = (String) request.getParameter("action");
 
-		// get data from post
-		String name = (String) request.getParameter("name");
-		int cityID = Integer.parseInt(request.getParameter("cityID"));
-		String description = (String) request.getParameter("description");
+      // get data from post
+      String name = (String) request.getParameter("txtBucketName");
+      int cityID = Integer.parseInt(request.getParameter("selectCity"));
+      String description = (String) request.getParameter("txtDescription");
+      
+      if (!action.isEmpty())
+      {
+         switch (action)
+         {
+            case "create":
+            {
+               System.out.println(usr.getUserID() + " " + name + " " + description + " " + cityID);
+               Bucket bucket = Bucket.CreateBucket(usr.getUserID(), name, description, cityID);
+               if (bucket == null)
+               {
+                  response.sendRedirect("error.jsp");
+               }
+            }
+            case "delete":
+               // TODO
+            case "update":
+               // TODO
+         }
+      }
 
-		if (!action.isEmpty()) {
-			switch (action) {
-			case "create": {
-				Bucket bucket = Bucket.CreateBucket(usr.getUserID(), name,
-						description, cityID);
-				if (bucket == null) {
-					response.sendRedirect("error.jsp");
-				}
-			}
-			case "delete":
-				// TODO
-			case "update":
-				// TODO
-			}
-		}
-
-	}
+   }
 
 }

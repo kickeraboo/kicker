@@ -21,10 +21,10 @@ public class JdbcBucket implements BucketDao
    public Bucket createBucket(Bucket newBucket)
    {
       // format the string
-      String query = "INSERT INTO Buckets(UserID, BucketName, CreationDate, Description, CityID)";
-      query += " VALUES (%1$d, '%2$s', '%3$s', '%4$s', %5$d)";
+      String query = "INSERT INTO Buckets(UserID, BucketName, Description, CityID)";
+      query += " VALUES (%1$d, '%2$s', '%3$s', %4$d)";
 
-      query = String.format(query, newBucket.getUserID(), newBucket.getBucketName(), newBucket.getCreationDate(), newBucket.getDescription(),
+      query = String.format(query, newBucket.getUserID(), newBucket.getBucketName(), newBucket.getDescription(),
             newBucket.getCityID());
 
       // if everything worked, inserted id will have the identity key
