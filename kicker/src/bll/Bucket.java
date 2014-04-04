@@ -131,7 +131,7 @@ public class Bucket
    public Bucket(int pBucketID, int pUserID, String pBucketName, Date pCreationDate, String pDescription, int pCityID)
    {
       this.mBucketID = pBucketID;
-      this.mUserID = pBucketID;
+      this.mUserID = pUserID;
       this.mBucketName = pBucketName;
       this.mCreationDate = pCreationDate;
       this.mDescription = pDescription;

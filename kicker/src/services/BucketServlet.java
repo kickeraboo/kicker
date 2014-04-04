@@ -34,7 +34,14 @@ public class BucketServlet extends HttpServlet
     */
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
    {
-      response.getWriter().write(BucketService.getBucketsByUserId(16));
+      if (request.getSession().getAttribute("LoggedUser") == null)
+      {
+         response.sendRedirect("index.jsp");
+      }
+
+      User usr = (User) request.getSession().getAttribute("LoggedUser");
+      
+      response.getWriter().write(BucketService.getBucketsByUserId(usr.getUserID()));
    }
 
    /**
