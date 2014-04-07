@@ -34,7 +34,7 @@ public class SignInServlet extends HttpServlet {
         request.getSession().setAttribute("facebook", facebook);
         StringBuffer callbackURL = request.getRequestURL();
         int index = callbackURL.lastIndexOf("/");
-        callbackURL.replace(index, callbackURL.length(), "").append("/facebookcb");
+        callbackURL.replace(index, callbackURL.length(), "").append("/facebookcb" + (request.getParameter("action") == null ? "" : "?action=" + request.getParameter("action")));
         response.sendRedirect(facebook.getOAuthAuthorizationURL(callbackURL.toString()));
 	}
 }

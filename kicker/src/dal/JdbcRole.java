@@ -167,7 +167,7 @@ public class JdbcRole implements RoleDao {
 			try {
 				int pRoleID = rs.getInt("RoleID");
 				String pRoleName = rs.getString("RoleName");
-				String pStatus = rs.getString("Status");
+				Boolean pStatus = rs.getBoolean("Status");
 
 				return new Role(pRoleID, pRoleName, pStatus);
 			} catch (Exception e) {

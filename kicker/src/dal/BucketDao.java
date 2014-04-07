@@ -3,6 +3,7 @@ package dal;
 import java.util.List;
 
 import bll.Bucket;
+import bll.Item;
 
 public interface BucketDao {
    public Bucket createBucket(Bucket newBucket);

@@ -12,4 +12,5 @@ public interface ItemDao {
    public boolean deleteItem(Item dItem);
    public boolean deleteItem(int itemId);
    public List<Item> getAll();
+   public List<Item> getItemsByBucketId(int bucketId);
 }

@@ -155,4 +155,9 @@ public class Bucket
       BucketDao bucket = new JdbcBucket();
       return bucket.createBucket(new Bucket(0, pUserID, pBucketName, null, pDescription, pCityID));
    }
+   
+   public static Boolean delete(int pBucketId) {
+		BucketDao bucket = new JdbcBucket();
+		return bucket.deleteBucket(pBucketId);
+	}
 }

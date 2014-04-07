@@ -18,10 +18,13 @@ public class JdbcItem implements ItemDao {
 	@Override
 	public Item createItem(Item newItem) {
 		// format the string
-		String query = "INSERT INTO Items (ItemName)";
-		query += " VALUES ('%1$s')";
 
-		query = String.format(query, newItem.getItemName());
+		String query = "INSERT INTO Items (ItemName, Description) VALUES ('%1$s', '%2$s');";
+
+		query = String.format(query, newItem.getItemName(),
+				newItem.getDescription());
+
+		System.out.println("Query: " + query);
 
 		// if everything worked, inserted id will have the identity key
 		// or primary key
@@ -140,8 +143,9 @@ public class JdbcItem implements ItemDao {
 			try {
 				int pItemID = rs.getInt("ItemID");
 				String pItemName = rs.getString("ItemName");
+				String pDescription = rs.getString("Description");
 
-				return new Item(pItemID, pItemName);
+				return (new Item(pItemID, pItemName, pDescription));
 			} catch (Exception e) {
 				// TODO: Handle
 			}
@@ -149,4 +153,31 @@ public class JdbcItem implements ItemDao {
 
 		return null;
 	}
+
+	@Override
+	public List<Item> getItemsByBucketId(int bucketId) {
+
+		ResultSet rs = DataService
+				.getData("SELECT DISTINCT i.* FROM Items i JOIN BucketsItems bi ON bi.BucketID = "
+						+ bucketId + ";");
+
+		List<Item> items = new ArrayList<Item>();
+
+		try {
+			while (rs.next()) {
+				items.add(convertResultSetToItem(rs));
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		if (items != null) {
+			return items;
+		}
+
+		return null;
+	}
+
 }
