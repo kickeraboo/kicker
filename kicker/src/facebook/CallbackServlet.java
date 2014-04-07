@@ -53,6 +53,8 @@ public class CallbackServlet extends HttpServlet
 
       try
       {
+         String action = request.getParameter("action");
+
          // selects the user information
          String query = "SELECT email, username, name, uid  FROM user WHERE uid=me()";
          JSONArray jsonArray = facebook.executeFQL(query);
@@ -69,20 +71,28 @@ public class CallbackServlet extends HttpServlet
 
             if (!facebookId.isEmpty())
             {
+               // if we get something here,
+               // it means the user already existed regardless
+               // of the action. Simply log user in...
                tmpUser = User.getUserByFacebookId(facebookId);
-
+               
+               // check the action. If the user is signing up, simply
+               // redirect to login with the information filled, but
+               // we do not insert the user
                if (tmpUser == null)
                {
-                  tmpUser = User.createUser(email, facebookId, username, fullname, 3, true);
-                  // TODO: check if inserted successfully
+                  if (action.equals("signup"))
+                  {
+                     tmpUser = new User(0, email, facebookId, username, fullname, 0, true);
+                     request.getSession().setAttribute("FutureUser", tmpUser);   
+                     response.sendRedirect(request.getContextPath() + "/");
+                  }
                }
-
-               // at this point we better have a user
-
-               if (tmpUser != null)
+               else
                {
                   // user exists put him in session
                   request.getSession().setAttribute("LoggedUser", tmpUser);
+                  response.sendRedirect(request.getContextPath() + "/");
                }
             }
          }
@@ -92,7 +102,5 @@ public class CallbackServlet extends HttpServlet
          // TODO Auto-generated catch block
          e.printStackTrace();
       }
-
-      response.sendRedirect(request.getContextPath() + "/");
    }
 }
