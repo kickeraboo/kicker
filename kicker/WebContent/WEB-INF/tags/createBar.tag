@@ -3,7 +3,7 @@
 	uri="http://claudiushauptmann.com/jsp-decorator/"%>
 
 <div class="navbar default pull-right">
-
+	<br/>
 	<button type="button" id="createBucket" class="btn btn-success">
 		<span class="glyphicon glyphicon-plus"></span>Bucket
 	</button>

@@ -250,14 +250,21 @@
 								if (json.length > 0) {
 									for (var i = 0; i < json.length; i++) {
 										$("#bucketList").append(
-												"<li><a href='#'>"
+												"<li><a href='#' data-bucketid='" + json[i].bucketID + "'>"
 														+ json[i].bucketName
 														+ "</a></li>");
 									}
 								}
 							});
 				}
+				
+				$(document).on("click", "#bucketList a", function(){
+					var bucketId = $(this).data("bucketid");
+					getItems(bucketId);
+				});
 			});
+			
+
 
 			$("#menu-toggle").click(function(e) {
 				e.preventDefault();
