@@ -113,7 +113,7 @@
 								$("#btnSignIn").on("click", function()
 								{
 									$('#signupbox').hide();
-									$('#loginbox').show()
+									$('#loginbox').show();
 								});
 							});
 						</script>

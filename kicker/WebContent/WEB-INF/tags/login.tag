@@ -1,3 +1,5 @@
+<%@ taglib prefix="tag" tagdir="/WEB-INF/tags"%>
+
 <div id="login">
    <div class="container">
       <div id="loginbox" style="margin-top: 50px;"
@@ -51,8 +53,9 @@
 
                      <div class="col-sm-12 controls">
                         <a id="btn-login" href="#"
-                           class="btn btn-success">Login </a> <a
-                           id="btn-fblogin" href="signin?action=signin"
+                           class="btn btn-success"
+                           onclick="alert('Coming soon... Please Login or Register using Facebook.'); return false;">Login
+                        </a> <a id="btn-fblogin" href="signin?action=signin"
                            class="btn btn-primary">Login with
                            Facebook</a>
                      </div>
@@ -61,8 +64,8 @@
                      <div class="col-md-12 control">
                         <div
                            style="border-top: 1px solid #888; padding-top: 15px; font-size: 85%">
-                           Don't have an account? <a href="#" id="btnSignUp">
-                              Sign Up Here! </a>
+                           Don't have an account? <a href="#"
+                              id="btnSignUp"> Sign Up Here! </a>
                         </div>
                      </div>
                   </div>
@@ -77,66 +80,59 @@
                <div class="panel-title">Sign Up</div>
                <div
                   style="float: right; font-size: 85%; position: relative; top: -10px">
-                  <a id="btnSignIn" href="#">Sign
-                     In</a>
+                  <a id="btnSignIn" href="#">Sign In</a>
                </div>
             </div>
             <div class="panel-body">
-               <form id="signupform" class="form-horizontal" role="form" method="post" action="">
-                  <div id="signupalert" style="display: none"
-                     class="alert alert-danger">
-                     <p>Error:</p>
-                     <span></span>
-                  </div>
-                  <div class="form-group">
-                     <label for="email" class="col-md-3 control-label">Username</label>
-                     <div class="col-md-9">
-                        <input type="text" class="form-control"
-                           name="email" value="${FutureUser.getUsername() }" placeholder="Username">
+               <form id="signupform" class="form-horizontal" role="form"
+                  method="post" action="">
+                  <tag:futureuser>
+                     <div id="signupalert" style="display: none"
+                        class="alert alert-danger">
+                        <p>Error:</p>
+                        <span></span>
                      </div>
-                  </div>
-                  
-                  <div class="form-group">
-                     <label for="email" class="col-md-3 control-label">Email</label>
-                     <div class="col-md-9">
-                        <input type="text" class="form-control"
-                           name="email" value="${FutureUser.getEmail() }" placeholder="Email Address">
+                     <div class="form-group">
+                        <label for="email"
+                           class="col-md-3 control-label">Username</label>
+                        <div class="col-md-9">
+                           <input type="text" class="form-control"
+                              name="email"
+                              value="${FutureUser.getUsername() }"
+                              placeholder="Username">
+                        </div>
                      </div>
-                  </div>
 
-                  <div class="form-group">
-                     <label for="firstname"
-                        class="col-md-3 control-label">Full Name</label>
-                     <div class="col-md-9">
-                        <input type="text" class="form-control"
-                           name="txtFullName" placeholder="Full Name" value="${FutureUser.getFullname() }">
+                     <div class="form-group">
+                        <label for="email"
+                           class="col-md-3 control-label">Email</label>
+                        <div class="col-md-9">
+                           <input type="text" class="form-control"
+                              name="txtFullName" placeholder="Full Name"
+                              value="${FutureUser.getEmail() }">
+                        </div>
                      </div>
-                  </div>
-                  <div class="form-group">
-                     <label for="password"
-                        class="col-md-3 control-label">Password</label>
-                     <div class="col-md-9">
-                        <input type="password" class="form-control"
-                           name="txtPassword" id="txtPassword" placeholder="Password">
-                     </div>
-                  </div>
-                  
-                  <div class="form-group">
-                     <label for="password"
-                        class="col-md-3 control-label">Repeat Password</label>
-                     <div class="col-md-9">
-                        <input type="password" id="txtRepeatPassword" class="form-control"
-                           name="txtRepeatPassword" placeholder="Repeat Password">
-                     </div>
-                  </div>
-                  <div class="form-group">
-                     <!-- Button -->
-                     <div class="col-md-offset-3 col-md-9">
-                        <input id="btn-signup" type="submit" class="btn btn-info" value="&nbsp Sign Up" />
-                        <span style="margin-left: 8px;">or</span>
-                     </div>
-                  </div>
 
+                     <div class="form-group">
+                        <label for="firstname"
+                           class="col-md-3 control-label">Full
+                           Name</label>
+                        <div class="col-md-9">
+                           <input type="text" class="form-control"
+                              name="txtFullName" placeholder="Full Name"
+                              value="${FutureUser.getFullname() }">
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <!-- Button -->
+                        <div class="col-md-offset-3 col-md-9">
+                           <input id="btn-signup" type="submit"
+                              class="btn btn-info" value="&nbsp Sign Up" />
+                           <span style="margin-left: 8px;">or</span>
+                        </div>
+                     </div>
+
+                  </tag:futureuser>
                   <div
                      style="border-top: 1px solid #999; padding-top: 20px"
                      class="form-group">

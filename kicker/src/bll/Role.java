@@ -3,6 +3,9 @@
  */
 package bll;
 
+import dal.JdbcRole;
+import dal.RoleDao;
+
 /**
  * @author Hanlet
  * 
@@ -67,8 +70,10 @@ public class Role {
 		this.mStatus = pStatus;
 	}
 
-	public Role(int pRoleID, String pRoleName, String pStatus) {
-		// TODO Auto-generated constructor stub
-	}
 
+	public static Role getRoleByName(String pRoleName)
+	{
+	   RoleDao role = new JdbcRole();
+	   return role.getRoleByName(pRoleName);
+	}
 }

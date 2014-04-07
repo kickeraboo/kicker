@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bll.Role;
 import bll.User;
 import facebook4j.Facebook;
 import facebook4j.FacebookException;
@@ -81,12 +82,16 @@ public class CallbackServlet extends HttpServlet
                // we do not insert the user
                if (tmpUser == null)
                {
-                  if (action.equals("signup"))
-                  {
-                     tmpUser = new User(0, email, facebookId, username, fullname, 0, true);
-                     request.getSession().setAttribute("FutureUser", tmpUser);   
+
+                     tmpUser = new User(0, email, facebookId, username, fullname, Role.getRoleByName("User").getRoleID() , true);
+                     tmpUser = User.createUser(tmpUser);
+                     
+                     if (tmpUser != null)
+                     {
+                        request.getSession().setAttribute("LoggedUser", tmpUser);
+                     }
                      response.sendRedirect(request.getContextPath() + "/");
-                  }
+
                }
                else
                {
