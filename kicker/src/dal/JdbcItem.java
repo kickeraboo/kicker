@@ -158,7 +158,7 @@ public class JdbcItem implements ItemDao {
 	public List<Item> getItemsByBucketId(int bucketId) {
 
 		ResultSet rs = DataService
-				.getData("SELECT DISTINCT i.* FROM Items i JOIN BucketsItems bi ON bi.BucketID = "
+				.getData("SELECT DISTINCT i.* FROM Items i JOIN BucketsItems bi ON bi.ItemID = i.ItemID WHERE bi.BucketID="
 						+ bucketId + ";");
 
 		List<Item> items = new ArrayList<Item>();
