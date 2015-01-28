@@ -1,0 +1,12 @@
+.project
+.settings
+.classpath
+.metadata
+*.class
+Servers
+RemoteSystemTempFiles
+
+# Package Files #
+*.jar
+*.war
+*.ear
